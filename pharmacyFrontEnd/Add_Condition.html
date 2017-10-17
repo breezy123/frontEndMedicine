@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h2 style="text-align: center">Add Condition</h2>
+
+<!---<form name = "regForm" onsubmit = "return validateForm()" method = "post" class="form-horizontal">-->
+<form name="conditionForm" onsubmit="validateForm()" method = "post" class="form-horizontal" style="border:1px solid #ccc">
+    <div class="container">
+        <label><b>Condition Name:</b></label>
+        <input type="text" placeholder="Condition Name" name="conditionName" required>
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+
+<script type = "text/javascript">
+
+    function validateForm() {
+        //var conditionId = document.forms["conditionForm"]["conditionID"].value;
+        var conditionName = document.forms["conditionForm"]["conditionName"].value;
+
+        var url = "http://localhost:8080/pharmacy/addCondition/" + conditionName;
+
+        var request = new XMLHttpRequest();
+
+        alert("Condition Successfully Captured.")
+        request.open("GET", url);
+        request.send();
+    }
+
+</script>

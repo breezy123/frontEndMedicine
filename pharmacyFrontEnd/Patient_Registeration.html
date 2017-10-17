@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient</title>
+</head>
+<body>
+<h2 style="text-align: center">Patient Registration</h2>
+<form name="patientForm" onsubmit="validateForm()" method = "post" class="form-horizontal" style="border:1px solid #ccc">
+    <div class="container">
+        <label><b>Patient Name:</b></label>
+        <input type="text" placeholder="Patient Name" name="patientName" required>
+        <label><b>Medical-Aid Name:</b></label>
+        <input type="text" placeholder="Medical Aid-Name" name="medicalAidname" required>
+        <label><b>Medical-Aid Number:</b></label>
+        <input type="number" placeholder="Medical Number" name="medicalAidnumber" required>
+        <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+
+<script type = "text/javascript">
+
+    function validateForm() {
+        var patientName = document.forms["patientForm"]["patientName"].value;
+        var medicalAidname = document.forms["patientForm"]["medicalAidname"].value;
+        var medicalAidnumber = document.forms["patientForm"]["medicalAidnumber"].value;
+
+        var url = "http://localhost:8080/pharmacy/addPatient/" + patientName +"/" +medicalAidname +"/" +medicalAidnumber;
+
+        var request = new XMLHttpRequest();
+
+        alert("Patient Registered Successfully.")
+        request.open("GET", url);
+        request.send();
+    }
+
+</script>

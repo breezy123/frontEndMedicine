@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine</title>
+</head>
+<body>
+<h2 style="text-align: center">Add Medicine</h2>
+<form name="medicineForm" onsubmit="validateForm()" method = "post" class="form-horizontal" style="border:1px solid #ccc">
+    <div class="container">
+        <label><b>Medicine Name:</b></label>
+        <input type="text" placeholder="Medicine Name" name="medicineName" required>
+        <label><b>Medicine Price:</b></label>
+        <input type="number" placeholder="Medicine Price" name="medicinePrice" required>
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+<script type = "text/javascript">
+
+    function validateForm() {
+        var medicineName = document.forms["medicineForm"]["medicineName"].value;
+        var medicinePrice = document.forms["medicineForm"]["medicinePrice"].value;
+
+        var url = "http://localhost:8080/pharmacy/addMedicine/" + medicineName +"/" +medicinePrice;
+
+        var request = new XMLHttpRequest();
+
+        alert("Medicine Successfully Captured.")
+        request.open("GET", url);
+        request.send();
+    }
+
+</script>

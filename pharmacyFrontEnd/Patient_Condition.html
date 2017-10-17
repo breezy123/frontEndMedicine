@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Condition</title>
+</head>
+<body>
+<h2 style="text-align: center">Add Patient Condition</h2>
+<form name="patientConditionForm" onsubmit="validateForm()" method = "post" class="form-horizontal" style="border:1px solid #ccc">
+    <div class="container">
+        <label><b>Patient ID:</b></label>
+        <input type="number" placeholder="Patient ID" name="patientID" required>
+        <label><b>Condition ID:</b></label>
+        <input type="number" placeholder="Condition ID" name="conditionID" required>
+        <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+
+<script type = "text/javascript">
+
+    function validateForm() {
+        var patientID = document.forms["patientConditionForm"]["patientID"].value;
+        var conditionID = document.forms["patientConditionForm"]["conditionID"].value;
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+
+        var curentDate = day + "/" + month + "/" + year;
+        var url = "http://localhost:8080/pharmacy/addPatientCondition/" + patientID +"/" +conditionID +"/" +curentDate;
+
+        var request = new XMLHttpRequest();
+
+        alert("Patient Conditions Registered.")
+        request.open("GET", url);
+        request.send();
+    }
+
+</script>
