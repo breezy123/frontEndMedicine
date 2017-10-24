@@ -29,17 +29,21 @@
         var date = new Date();
 
         var day = date.getDate();
-        var month = date.getMonth();
+        var month = date.getMonth()+1;
         var year = date.getFullYear();
+        var hour  = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
 
-        var curentDate = day + "/" + month + "/" + year;
-        var url = "http://localhost:8080/pharmacy/addPatientCondition/" + patientID +"/" +conditionID +"/" +curentDate;
+        var curentDate = year + "-" + month + "-" + day+ " " +hour +":"+minutes+":"+seconds;
+        var url = "http://localhost:8080/pharmacy/addPatientCondition/"+patientID+"/"+conditionID+"/"+curentDate;
 
         var request = new XMLHttpRequest();
-
-        alert("Patient Conditions Registered.")
+		//2017-10-04s
+        alert(curentDate)
         request.open("GET", url);
         request.send();
+		document.write(currentDate);
     }
 
 </script>
